@@ -1,0 +1,4 @@
+   @error($name)
+                    {{$message}}
+    
+  @enderror
