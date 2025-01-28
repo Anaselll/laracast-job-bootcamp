@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>home</title>
-      <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+      @vite(["resources/js/app.js"])
 </head>
 <body>
 <nav class="bg-gray-800">
@@ -42,11 +42,22 @@
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <x-nav-link  :active="request()->is('/')? true :false" href="/"  >home</x-nav-link>
-            <x-nav-link {{-- type='b' --}} :active="request()->is('about')? true :false"  href="/about" >about</x-nav-link>
-            <x-nav-link  :active="request()->is('contact')? true :false"  href="/contact" >contact</x-nav-link>
-            <x-nav-link  :active="request()->is('jobs')? true :false"  href="/jobs" >jobs</x-nav-link>
-            <x-nav-link  :active="request()->is('jobs/create')? true :false"  href="/jobs/create" >create</x-nav-link>
+            <x-nav-link  :active="request()->is('/')" href="/"  >home</x-nav-link>
+            <x-nav-link {{-- type='b' --}} :active="request()->is('about')"  href="/about" >about</x-nav-link>
+            <x-nav-link  :active="request()->is('contact')"  href="/contact" >contact</x-nav-link>
+            <x-nav-link  :active="request()->is('jobs')"  href="/jobs" >jobs</x-nav-link>
+            <x-nav-link  :active="request()->is('jobs/create')"  href="/jobs/create" >create</x-nav-link>
+            @guest
+            <x-nav-link  :active="request()->is('login')"  href="/login" >login</x-nav-link>
+            <x-nav-link  :active="request()->is('register')"  href="/register" >register</x-nav-link>
+            @endguest
+            @auth
+<form method="POST" action="/logout">
+  @csrf
+  <x-form-button type='submit'>logout</x-form-button>
+</form>                
+            @endauth
+    
           </div>
         </div>
       </div>

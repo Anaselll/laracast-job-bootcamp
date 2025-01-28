@@ -16,7 +16,7 @@
     <td class="border">{{$job->employer_id}}</td>
   <td class="border">{{$job["title"]}}</td>
   <td class="border">{{$job["salary"]}}</td>
-  <td class="border"><a href="/jobs/{{$job['id']}}"><button>show</button></a></td>
+  <td class="border"><a href="/jobs/{{$job['id']}}"><x-form-button>show</button></a></x-form-button>
   </tr>
   @endforeach
   @endif
